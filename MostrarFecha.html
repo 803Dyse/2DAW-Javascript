@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="EstiloEjercicios.css">
+</head>
+
+
+<body>
+    <!--
+Ejercicio mostrar fechas:
+    En este ejercicio, se desea mostrar al usuario una cajita de texto que ponga "Fecha" y en esa cajita usando el formato dd/mm/yyyy el usuario introduzca una fecha y cuando pinche en un boton que estará justo abajo escrito "Mostrar", que muestre la fecha introducida por pantalla.
+-->
+    <p>Introduce una fecha, separada de '/' Ej: 21/10/2023</p>
+    <input type="text" id="fechaUsuario">
+    <button onclick="fechaCalcular()">Mostrar</button>
+    <p id="mensaje"></p>
+    <script>
+        //un array para guardar los meses y asociar al numero de mes.
+        const monthNames = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+
+        function fechaCalcular() {
+            var fecha = document.getElementById("fechaUsuario").value.split("/");
+            console.log(fecha);
+            //La salida de esto seria algo como: "Array(3) [ "23", "03", "2001" ]"
+            //Sabiendo esto, y recordando que los arrays empiezan por 0 y no por 1, podemos seguir.
+
+            //ya que fecha es un array y cada posicion es un elemento del array que ademas, segun su posicion sabemos si es dia, mes o aó, todo lo restante es coger dicho array y printearlo con el mensaje correspondiente, ejemplo: Si queremos sacar el año solamente, año esta en la posicion 2 del array fecha, como podemos ver arriba.
+            //Entonces todo lo que hay que hacer es coger ese trozo del array y printearlo con el mensaje.
+            document.getElementById("mensaje").innerHTML = monthNames[parseInt(fecha[1]) - 1] + ", día " + parseInt(fecha[0]) + " del año " + fecha[2] + ".";
+        }
+    </script>
+</body>
+
+</html>
