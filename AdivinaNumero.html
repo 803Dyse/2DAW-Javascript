@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="EstiloEjercicios.css">
+
+</head>
+<script>
+    const min = 1; //numero minimo
+    const max = 15; //numero maximo
+    var tries = 0;
+
+
+
+    //Tal y como tenemos esto, controlamos que se generen numeros aleatorios desde 1 hasta 15.
+    var numeroRandom = Math.round(Math.random() * (max - min) + min);
+console.log(numeroRandom);
+    function adivinar() {
+
+        //Aqui recogemos el numero que introduce el usuario.
+        var input = document.getElementById("adivinarNumero").value;
+
+
+        if (input == numeroRandom) {
+
+            document.getElementById("mensaje").innerHTML = "¡Enhorabuena! Adivinaste el numero " + numeroRandom + " con un total de " + tries + " fallos.";
+
+        } else {
+            tries++;
+            document.getElementById("mensaje").innerHTML = " Numero equivocado, de momento tienes " + tries + " fallos.";
+        }
+    }
+
+</script>
+
+<body>
+    <!--
+        Queremos un juego en Javascript en el que se debe adivinar un numero.
+
+        Como funcionará el programa:
+        - Un numero minimo 1
+        - Un numero maximo 15
+        - El usuario tiene intentos libres, puede fallar las veces que quiera, pero
+        cuando adivine el numero, se mandará un mensaje en la web que dirá enhorabuena
+        adivinaste el numero con X fallos.
+
+        - El numero que se quiere adivinar siempre será generado de forma random, respetando los limite de min y max. (1 y 15)
+    -->
+    <p id="mensaje">Adivina un numero, de 1 a 15:</p>
+    <input type="number" name="numero" id="adivinarNumero">
+    <button onclick="adivinar()">Enviar</button>
+
+</body>
+
+</html>
