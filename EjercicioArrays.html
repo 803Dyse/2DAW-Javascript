@@ -9,15 +9,36 @@
 </head>
 
 <body>
-<!--
+    <!--
 Ejercicio Arrays: 
     Queremos un programa que permita al usuario introducir datos en una cajita de input. Se dirá al usuario que escriba números separados por ",".
     Abajo de la cajita el programa dispone de un boton llamado "Mostrar Numeros", que sacará por pantalla los numeros introducidos.
 -->
-<p>Introduce una cadena de numeros, la cantidad que quieras y lo los numeros que quieras, separados por ","</p>
-<script>
+    <p>Introduce una cadena de numeros, la cantidad que quieras
+        <br> y lo los numeros que quieras, separados por ","
+    </p>
+    <input type="text" id="numeros">
+    <button onclick="mostrarNumeros()">Mostrar Numeros</button>
+    <script>
+        //capturamos los numeros introducidos y ya los spliteamos con el metodo split indicando que ","
+        //sera el criterio que separa cada elemento del array que sale de nuestro input.
+        var numeros = document.getElementById("numeros").value.split(",");
 
-</script>
+        /*
+        Esta funcion crea un elemento p, con id "mensaje" y la dispara de modo que el usuario
+        solamente la ve cuando introduzca datos en el input.
+        Con este metodo, printeamos los numeros que el usuario introduce.
+        */
+        function mostrarNumeros() {
+            var result = document.createElement("p");
+            var contenidoResult = document.createTextNode(numeros);
+
+            result.appendChild(contenidoResult);
+            var mensajeUser = document.getElementById("mensaje"); //Aun que no tengamos ningun elemento con este id, le estamos diciendo que despues de crear la etiqueta, que se encuentre con este id.
+            document.body.insertBefore(result, mensajeUser);
+        }
+
+    </script>
 
 </body>
 
