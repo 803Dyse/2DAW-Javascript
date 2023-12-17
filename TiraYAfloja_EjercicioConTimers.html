@@ -10,16 +10,16 @@
 <body>
     <table align="center" style="margin-top: 100px;">
         <tr>
-            <td><b>Jugador1</b></td>
-            <td><input type="text" id="game"></td>
-            <td><b>Jugador2</b></td>
+            <td><b>player1</b></td>
+            <td><input type="text" id="timerResult"></td>
+            <td><b>player2</b></td>
         </tr>
         <tr>
             <td colspan="3" id="result"></td>
         </tr>
         <tr>
             <td colspan="3" align="center">
-                <button>Parar</button>
+                <button onclick="clearInterval(player1), clearInterval(player2)">Parar</button>
             </td>
         </tr>
     </table>
@@ -33,11 +33,45 @@ Ejercicio Tira Y Afloja:
 -->
 
     <script>
-const timer1 = 
-const timer2 =
-        //Primero creamos el generador de numeros random
-        var delayRandom = Math.round(Math.random() * (MAX - MIN) - MIN);
+        //constantes que necesitamos determinar para mejor funcionalidad del programa.
+        const TIMER1 = 1;
+        const TIMER2 = 20;
+        const MIN = 500;
+        const MAX = 1000;
 
+        //timer para determinar el resultado del juego.
+        var timer = 0;
+
+        //Primero creamos el generador de numeros random
+        var player1 = setInterval(function () { temporizador(player1) }, getRandomInterval());
+        var player2 = setInterval(function () { temporizador(player2) }, getRandomInterval());
+
+
+        //PAra no repetir codigo, hacemos una funcion que genera el delay random que queremos añadir tanto a player1 como a player2.
+        function getRandomInterval() {
+            return Math.floor(Math.random() * (MAX - MIN) + MIN);
+        }
+
+        //Ahora la funcion que se llama en funcion del timer que definimos arriba.
+        function temporizador(player) {
+            if (player == "player1") {
+                timer -= Math.floor(Math.random() * (3 - 1) + 1);
+                document.getElementById("timerResult").value = temporizador;
+            } else {
+                timer += Math.floor(Math.random() * (3 - 1) + 1);
+                document.getElementById("timerResult").value = temporizador;
+            }
+            document.getElementById("timerResult").value = timer;
+            if (timer <= TIMER1) {
+                document.getElementById("result").innerHTML = "Ganó jugador 1!";
+                clearInterval(player1);
+                clearInterval(player2);
+            } else if (timer >= TIMER2) {
+                document.getElementById("result").innerHTML = "Ganó jugador 2!";
+                clearInterval(player1);
+                clearInterval(player2);
+            }
+        }
 
     </script>
 </body>
