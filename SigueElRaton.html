@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label id="mover"></label>
+<script>
+    var label = document.getElementById("mover");
+
+    function seguir(e){
+        label.innerText="(" + e.clientX + "," + e.clientY + ")";
+        label.style.top()
+    }
+</script>
+</body>
+</html>

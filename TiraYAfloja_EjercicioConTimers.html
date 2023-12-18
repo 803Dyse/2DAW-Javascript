@@ -34,17 +34,17 @@ Ejercicio Tira Y Afloja:
 
     <script>
         //constantes que necesitamos determinar para mejor funcionalidad del programa.
-        const TIMER1 = 1;
+        const TIMER1 = 0;
         const TIMER2 = 20;
         const MIN = 500;
         const MAX = 1000;
 
         //timer para determinar el resultado del juego.
-        var timer = 0;
+        var timer = 10;
 
         //Primero creamos el generador de numeros random
-        var player1 = setInterval(function () { temporizador(player1) }, getRandomInterval());
-        var player2 = setInterval(function () { temporizador(player2) }, getRandomInterval());
+        var player1 = setInterval(temporizador, getRandomInterval(), 'player1');
+        var player2 = setInterval(temporizador, getRandomInterval(), 'player2');
 
 
         //PAra no repetir codigo, hacemos una funcion que genera el delay random que queremos añadir tanto a player1 como a player2.
