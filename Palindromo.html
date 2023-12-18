@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="txt">Escribre una frase palíndroma: </label>
+    <input type="text" name="txt" id="txt" placeholder="Escribe aquí">
+    <button onclick="checkPal()">Comprobar</button>
+    <p id="comprobacion"></p>
+    <script>
+        function checkPal() {
+            const PAL = document.getElementById("txt").value;
+
+            //booleano para indicar si la palabra es palindroma o no
+            let isPal = true;
+            let right = PAL.length - 1;
+            let left = 0;
+
+            do {
+
+                if (PAL[left] != PAL[right]) {
+                    isPal = false;
+                }
+                //Aqui lo que se dice es que coja el caracter de la derecha y de la izquierda, y avance
+                //hasta el centro, de modo que se chequea la primera y ultima letra de cada lado, hasta
+                //llegar al centro. Si todas "matchean", se cumplirá como true nuestra variable "isPal".
+                //Esto significaria que la palabra es palíndroma.
+                left += 1;
+                right -= 1;
+            } while (isPal && left < right);
+
+            //Si el booleano isPal devuelve true, se dirá "es palindromo", si devuelve false "No es palindromo".
+            document.getElementById("comprobacion").innerHTML = isPal ? "Es palíndromo" : "No es palíndromo";
+
+        }
+    </script>
+</body>
+
+</html>
